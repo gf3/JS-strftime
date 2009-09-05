@@ -10,8 +10,12 @@ Example
 
 Simple example:
 
-    var date = new Date("June 7, 2009 16:05:01");
-    date.strftime("%Y.%m/%d"); // 2009.06/07
+    > var date = new Date("June 7, 2009 16:05:01");
+    > date.strftime("%Y.%m/%d");
+    2009.06/07
+    
+    > date.strftime('%Y-%m-%d %H:%M:%S'); // SQL
+    2009-06-07 16:05:01
 
 Formatting
 ----------
