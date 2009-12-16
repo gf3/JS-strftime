@@ -57,4 +57,6 @@ Same as ruby:
 Author
 ------
 
-[Gianni Chiappetta](http://github.com/giannichiappetta) &ndash; [Runlevel6](http://www.runlevel6.org)
+[Gianni Chiappetta](http://github.com/gf3) &ndash; [gf3.ca](http://gf3.ca)
+
+Contributions by: [Anton Mironov](http://github.com/mironov)
