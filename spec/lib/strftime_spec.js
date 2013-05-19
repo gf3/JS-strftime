@@ -163,22 +163,17 @@ Screw.Unit(function() {
     });
     
     describe("`%Z`", function(){
+      //| Might suffice to test formatting since browsers will 
+      //| automatically convert dates to the local timezone
       it ("should return the time zone name", function() {
-        expect(date.strftime("%Z")).to(equal, 'PDT');
+        expect((date.strftime("%Z").match(/-?[A-Z]{3,4}/)) != null).to(equal , true);
       });
     });
     
     describe("`%z`", function(){
-      // it ("should return the time zone expressed as a UTC offset", function() {
-      //   expect(date.strftime("%z")).to(equal, '-04:00');
-      // });
-
-      //| Might suffice to test formatting since browsers will 
-      //| automatically convert dates to the local timezone
       it ("should return the time zone formatted as a UTC offset", function() {
         expect((date.strftime("%z").match(/-?[0-9]{2}:[0-9]{2}/)) != null).to(equal , true);
       });
-
     });
     
     describe("`%%`", function(){
