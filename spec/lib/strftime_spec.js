@@ -124,6 +124,42 @@ Screw.Unit(function() {
         date = new Date("Jan 1, 2009")
         expect(date.strftime("%U")).to(equal, '00');
       });
+
+      it ("should return the number of the current year starting from Sunday for a year that starts on a Sunday", function() {
+        expect(new Date("Jan  1, 2012").strftime("%U")).to(equal, '01');
+        expect(new Date("Mar  4, 2012").strftime("%U")).to(equal, '10');
+        expect(new Date("Mar  3, 2012").strftime("%U")).to(equal, '09');
+      });
+      it ("should return the number of the current year starting from Sunday for a year that starts on a Monday", function() {
+        expect(new Date("Jan  1, 2007").strftime("%U")).to(equal, '00');
+        expect(new Date("Mar  4, 2007").strftime("%U")).to(equal, '09');
+        expect(new Date("Mar  3, 2007").strftime("%U")).to(equal, '08');
+      });
+      it ("should return the number of the current year starting from Sunday for a year that starts on a Tuesday", function() {
+        expect(new Date("Jan  1, 2013").strftime("%U")).to(equal, '00');
+        expect(new Date("Mar  3, 2013").strftime("%U")).to(equal, '09');
+        expect(new Date("Mar  2, 2013").strftime("%U")).to(equal, '08');
+      });
+      it ("should return the number of the current year starting from Sunday for a year that starts on a Wednesday", function() {
+        expect(new Date("Jan  1, 2014").strftime("%U")).to(equal, '00');
+        expect(new Date("Mar  2, 2014").strftime("%U")).to(equal, '09');
+        expect(new Date("Mar  1, 2014").strftime("%U")).to(equal, '08');
+      });
+      it ("should return the number of the current year starting from Sunday for a year that starts on a Thursday", function() {
+        expect(new Date("Jan  1, 2015").strftime("%U")).to(equal, '00');
+        expect(new Date("Mar  8, 2015").strftime("%U")).to(equal, '10');
+        expect(new Date("Mar  7, 2015").strftime("%U")).to(equal, '09');
+      });
+      it ("should return the number of the current year starting from Sunday for a year that starts on a Friday", function() {
+        expect(new Date("Jan  1, 2010").strftime("%U")).to(equal, '00');
+        expect(new Date("Mar  7, 2010").strftime("%U")).to(equal, '10');
+        expect(new Date("Mar  6, 2010").strftime("%U")).to(equal, '09');
+      });
+      it ("should return the number of the current year starting from Sunday for a year that starts on a Saturday", function() {
+        expect(new Date("Jan  1, 2005").strftime("%U")).to(equal, '00');
+        expect(new Date("Mar  6, 2005").strftime("%U")).to(equal, '10');
+        expect(new Date("Mar  5, 2005").strftime("%U")).to(equal, '09');
+      });
     });
     
     describe("`%W`", function(){
