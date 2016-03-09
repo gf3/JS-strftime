@@ -71,6 +71,18 @@ Screw.Unit(function() {
       it ("should return the day of the year", function() {
         expect(date.strftime("%j")).to(equal, '158');
       });
+
+      it ("should return the day of the year when daylight savings influences the seconds offset", function() {
+        date = new Date(2006, 5, 7);
+        expect(date.strftime("%j")).to(equal, '158');
+      });
+
+      it ("should return the day of the year during a leap year", function() {
+        date = new Date(2012, 1, 28);
+        expect(date.strftime("%j")).to(equal, '59');
+        date = new Date(2012, 2, 1);
+        expect(date.strftime("%j")).to(equal, '61');
+      });
     });
     
     describe("`%k`", function(){
