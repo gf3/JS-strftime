@@ -71,6 +71,18 @@ Screw.Unit(function() {
       it ("should return the day of the year", function() {
         expect(date.strftime("%j")).to(equal, '158');
       });
+
+      it ("should return the day of the year when daylight savings influences the seconds offset", function() {
+        date = new Date(2006, 5, 7);
+        expect(date.strftime("%j")).to(equal, '158');
+      });
+
+      it ("should return the day of the year during a leap year", function() {
+        date = new Date(2012, 1, 28);
+        expect(date.strftime("%j")).to(equal, '59');
+        date = new Date(2012, 2, 1);
+        expect(date.strftime("%j")).to(equal, '61');
+      });
     });
     
     describe("`%k`", function(){
@@ -124,11 +136,83 @@ Screw.Unit(function() {
         date = new Date("Jan 1, 2009")
         expect(date.strftime("%U")).to(equal, '00');
       });
+
+      it ("should return the number of the current year starting from Sunday for a year that starts on a Sunday", function() {
+        expect(new Date("Jan  1, 2012").strftime("%U")).to(equal, '01');
+        expect(new Date("Mar  4, 2012").strftime("%U")).to(equal, '10');
+        expect(new Date("Mar  3, 2012").strftime("%U")).to(equal, '09');
+      });
+      it ("should return the number of the current year starting from Sunday for a year that starts on a Monday", function() {
+        expect(new Date("Jan  1, 2007").strftime("%U")).to(equal, '00');
+        expect(new Date("Mar  4, 2007").strftime("%U")).to(equal, '09');
+        expect(new Date("Mar  3, 2007").strftime("%U")).to(equal, '08');
+      });
+      it ("should return the number of the current year starting from Sunday for a year that starts on a Tuesday", function() {
+        expect(new Date("Jan  1, 2013").strftime("%U")).to(equal, '00');
+        expect(new Date("Mar  3, 2013").strftime("%U")).to(equal, '09');
+        expect(new Date("Mar  2, 2013").strftime("%U")).to(equal, '08');
+      });
+      it ("should return the number of the current year starting from Sunday for a year that starts on a Wednesday", function() {
+        expect(new Date("Jan  1, 2014").strftime("%U")).to(equal, '00');
+        expect(new Date("Mar  2, 2014").strftime("%U")).to(equal, '09');
+        expect(new Date("Mar  1, 2014").strftime("%U")).to(equal, '08');
+      });
+      it ("should return the number of the current year starting from Sunday for a year that starts on a Thursday", function() {
+        expect(new Date("Jan  1, 2015").strftime("%U")).to(equal, '00');
+        expect(new Date("Mar  8, 2015").strftime("%U")).to(equal, '10');
+        expect(new Date("Mar  7, 2015").strftime("%U")).to(equal, '09');
+      });
+      it ("should return the number of the current year starting from Sunday for a year that starts on a Friday", function() {
+        expect(new Date("Jan  1, 2010").strftime("%U")).to(equal, '00');
+        expect(new Date("Mar  7, 2010").strftime("%U")).to(equal, '10');
+        expect(new Date("Mar  6, 2010").strftime("%U")).to(equal, '09');
+      });
+      it ("should return the number of the current year starting from Sunday for a year that starts on a Saturday", function() {
+        expect(new Date("Jan  1, 2005").strftime("%U")).to(equal, '00');
+        expect(new Date("Mar  6, 2005").strftime("%U")).to(equal, '10');
+        expect(new Date("Mar  5, 2005").strftime("%U")).to(equal, '09');
+      });
     });
     
     describe("`%W`", function(){
       it ("should return the week number of the current year starting from Monday", function() {
         expect(date.strftime("%W")).to(equal, '22');
+      });
+
+      it ("should return the number of the current year starting from Monday for a year that starts on a Sunday", function() {
+        expect(new Date("Jan  1, 2012").strftime("%W")).to(equal, '00');
+        expect(new Date("Jun  4, 2012").strftime("%W")).to(equal, '23');
+        expect(new Date("Jun  3, 2012").strftime("%W")).to(equal, '22');
+      });
+      it ("should return the number of the current year starting from Monday for a year that starts on a Monday", function() {
+        expect(new Date("Jan  1, 2007").strftime("%W")).to(equal, '01');
+        expect(new Date("Jun  4, 2007").strftime("%W")).to(equal, '23');
+        expect(new Date("Jun  3, 2007").strftime("%W")).to(equal, '22');
+      });
+      it ("should return the number of the current year starting from Monday for a year that starts on a Tuesday", function() {
+        expect(new Date("Jan  1, 2013").strftime("%W")).to(equal, '00');
+        expect(new Date("Jun  3, 2013").strftime("%W")).to(equal, '22');
+        expect(new Date("Jun  2, 2013").strftime("%W")).to(equal, '21');
+      });
+      it ("should return the number of the current year starting from Monday for a year that starts on a Wednesday", function() {
+        expect(new Date("Jan  1, 2014").strftime("%W")).to(equal, '00');
+        expect(new Date("Jun  2, 2014").strftime("%W")).to(equal, '22');
+        expect(new Date("Jun  1, 2014").strftime("%W")).to(equal, '21');
+      });
+      it ("should return the number of the current year starting from Monday for a year that starts on a Thursday", function() {
+        expect(new Date("Jan  1, 2015").strftime("%W")).to(equal, '00');
+        expect(new Date("Jun  1, 2015").strftime("%W")).to(equal, '22');
+        expect(new Date("May 31, 2015").strftime("%W")).to(equal, '21');
+      });
+      it ("should return the number of the current year starting from Monday for a year that starts on a Friday", function() {
+        expect(new Date("Jan  1, 2010").strftime("%W")).to(equal, '00');
+        expect(new Date("Jun  7, 2010").strftime("%W")).to(equal, '23');
+        expect(new Date("Jun  6, 2010").strftime("%W")).to(equal, '22');
+      });
+      it ("should return the number of the current year starting from Monday for a year that starts on a Saturday", function() {
+        expect(new Date("Jan  1, 2005").strftime("%W")).to(equal, '00');
+        expect(new Date("Jun  6, 2005").strftime("%W")).to(equal, '23');
+        expect(new Date("Jun  5, 2005").strftime("%W")).to(equal, '22');
       });
     });
     
