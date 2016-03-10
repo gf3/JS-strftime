@@ -3,8 +3,6 @@ Date#strftime
 
 [Ruby-like](http://www.ruby-doc.org/core/classes/Time.html#M000298) strftime for javascript, because date-formatting is a pain. Fully spec'd!
 
-**NOTE**: Quasi-beta &ndash; the following formats still need to be implemented: `%W`, and `%Z`.
-
 Example
 -------
 
